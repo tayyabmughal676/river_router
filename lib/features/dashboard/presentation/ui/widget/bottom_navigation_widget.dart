@@ -18,25 +18,30 @@ class _BottomNavigationWidgetState
   Widget build(BuildContext context) {
     final position = ref.watch(dashboardControllerProvider);
     return BottomNavigationBar(
-        currentIndex: position,
-        onTap: (value) => onItemTap(index: value),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_work),
-            activeIcon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag),
-            activeIcon: Icon(Icons.shopify),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings_applications),
-            activeIcon: Icon(Icons.settings),
-            label: "Home",
-          ),
-        ]);
+      currentIndex: position,
+      onTap: (value) => onItemTap(index: value),
+      selectedLabelStyle: const TextStyle(
+          color: Colors.deepOrange, fontSize: 14, fontWeight: FontWeight.w700),
+      unselectedLabelStyle: const TextStyle(
+          color: Colors.deepPurple, fontSize: 12, fontWeight: FontWeight.w500),
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_work),
+          activeIcon: Icon(Icons.home),
+          label: "Home",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.shopping_bag),
+          activeIcon: Icon(Icons.shopify),
+          label: "Cart",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings_applications),
+          activeIcon: Icon(Icons.settings),
+          label: "Setting",
+        ),
+      ],
+    );
   }
 
   void onItemTap({required int index}) {
