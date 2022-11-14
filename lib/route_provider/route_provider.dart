@@ -5,6 +5,7 @@ import 'package:river_router/constants/constants.dart';
 import 'package:river_router/features/cart/presentation/ui/cart_screen.dart';
 import 'package:river_router/features/dashboard/presentation/ui/dashboard_screen.dart';
 import 'package:river_router/features/home/presentation/ui/home_screen.dart';
+import 'package:river_router/features/product/presentation/ui/widget/product_detail_screen.dart';
 import 'package:river_router/features/setting/presentation/ui/setting_screen.dart';
 import 'package:river_router/screens/home_screen.dart';
 import 'package:river_router/screens/error_screens/route_not_found.dart';
@@ -31,15 +32,29 @@ final goRouterProvider = Provider<GoRouter>(
                 DashboardScreen(key: state.pageKey, child: child),
             routes: [
               GoRoute(
-                path: "/",
-                name: Constants.home,
-                pageBuilder: (context, state) {
-                  return NoTransitionPage(
-                      child: HomeFeatureScreen(
-                    key: state.pageKey,
-                  ));
-                },
-              ),
+                  path: "/",
+                  name: Constants.home,
+                  pageBuilder: (context, state) {
+                    return NoTransitionPage(
+                        child: HomeFeatureScreen(
+                      key: state.pageKey,
+                    ));
+                  },
+                  routes: [
+                    GoRoute(
+                      parentNavigatorKey: _shellNavigator, //_rootNavigator,
+                      path: "productDetail/:id",
+                      name: Constants.productDetail,
+                      pageBuilder: (context, state) {
+                        final id = state.params['id'];
+                        return NoTransitionPage(
+                            child: ProductDetailScreen(
+                          key: state.pageKey,
+                          productId: id ?? "",
+                        ));
+                      },
+                    ),
+                  ]),
               GoRoute(
                 path: "/cart",
                 name: Constants.cart,
