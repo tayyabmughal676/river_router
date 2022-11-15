@@ -37,7 +37,12 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
   flutter_riverpod: ^2.1.1
-  go_router: ^5.1.5
+  go_router: ^5.1.6
+  firebase_messaging: any
+  flutter_local_notifications: any
+  firebase_core: any
+  firebase_crashlytics: any
+  firebase_analytics: any
 
 
 dev_dependencies:
