@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:river_router/constants/constants.dart';
+import 'package:river_router/singletons/singleton_example.dart';
 
 class HomeFeatureScreen extends StatefulWidget {
   const HomeFeatureScreen({Key? key}) : super(key: key);
@@ -10,6 +10,14 @@ class HomeFeatureScreen extends StatefulWidget {
 }
 
 class _HomeFeatureScreenState extends State<HomeFeatureScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    SingletonExample.instance.someMethod();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
